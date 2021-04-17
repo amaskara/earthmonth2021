@@ -4,14 +4,19 @@
    
   }
   
+:root {
+  --main-bg-color: #26453e;
+  --off-white: #F4F0DB;
+}
+.logo {
 
-
-.logo a{
-    color: black;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 15px;
     z-index: 0;
-    
+}
+
+.earth-title{
+  font-size: 35px;
 }
 
 .content{
@@ -21,31 +26,181 @@
 .cards{
   width: 77%;
   margin-left: 23%;
-
 }
-.card{
-  background-color: pink;
+
+.card {
+  display: flex;
+  flex-direction: row;
   height: 100vh;
-  
- 
-  border-style: dashed;
+  overflow: hidden;
+  position: relative;
+
+  background-color: var(--main-bg-color);
 }
 
-.navigation{
+.card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  line-height: 1.6;
+  color: white;
+  z-index: 2;
+}
+
+.headline {
+  font-size: 45px;
+}
+
+.byline {
+  font-size: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.summary {
+  font-size: 24px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.full-photo {
+  position: absolute;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.left-container {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+}
+
+.right-container {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+}
+
+.first-txt {
+  font-size: 56px;
+  position: absolute;
+  top: 45vh;
+  left: 3vw;
+  color: white;
+  z-index: 2;
+}
+
+#navigation{
   height: 100vh;
   width: 23%;
-  background-color: green;
+  background-color: var(--main-bg-color) ;
   position: fixed;
-  border-style: dashed;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
 }
 
-.full-photo{
+.active{
 
+  font-weight: bold;
+  opacity: 100% !important;
 }
 
-.left-photo{
+#navigation ul li a{
+  color: var(--off-white);
+  text-decoration: none;
+  opacity: 75%;
+  font-family: franklin-gothic-urw, sans-serif;
   
+  
+
+}
+
+#navigation ul li a:hover{
+ opacity: 100%;
+}
+
+#navigation ul{
+  list-style-type: none;
+ 
+  /* border-style: dashed; */
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+ 
+
+ 
+  height: 100%;
+
+
+}
+
+.nav-titles {
+
+  color: var(--off-white);
+  margin-bottom: 20%
+   
+}
+
+.nav-wrapper{
+  flex: 1;
+  width: 75%;
+   /* border-style: dashed; */
+    display: flex;
+  flex-direction: column;
+
+ 
+  padding-top: 15% ;
+  /* justify-content: space-around; */
+
+}
+
+
+.adtest{
+  width: 800px;
+  height: 500px;
+  background-color: pink;
+  margin: auto;
+}
+/* card1 slideshow */
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
 }
 
 
@@ -53,9 +208,26 @@
 you want to quickly test how this works on your computer, just make your 
 browser window really skinny */
 @media screen and (max-width: 800px) {
-
-    .logo{
-        font-size: 20px;
-    }
-    
+  .logo{
+    font-size: 20px;
   }
+
+  .left-container, .right-container {
+    width: 100%;
+    position: absolute;
+  }
+
+  img {
+    position: absolute;
+  }
+
+  .first-txt {
+    font-size: 56px;
+    position: absolute;
+    top: 40vh;
+    left: 3vw;
+    color: white;
+    z-index: 2;
+  }
+    
+}
