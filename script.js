@@ -2,7 +2,7 @@
 var $navigationLinks = $('#navigation > .nav-wrapper > ul > li > a');
 // console.log($navigationLinks)
 // cache (in reversed order) the sections
-var $cards = $($(".card").get().reverse());
+var $cards = $($(".card").get().slice(1).reverse());
 // console.log($(".card"))
 
 
@@ -10,6 +10,8 @@ var $cards = $($(".card").get().reverse());
 var sectionIdTonavigationLink = {};
 $cards.each(function () {
   var id = $(this).attr('id');
+
+
 
   sectionIdTonavigationLink[id] = $('#navigation > .nav-wrapper > ul > li > a[href=\\#' + id + ']');
 });

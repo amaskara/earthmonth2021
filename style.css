@@ -1,9 +1,19 @@
 * {
     margin: 0; padding: 0;
     font-family: minion-pro;
+     /* background: #000 !important;
+ color: #0f0 !important;
+ outline: solid #f00 1px !important; */
    
   }
-  
+
+
+.js-loading *,
+.js-loading *:before,
+.js-loading *:after {
+  animation-play-state: paused !important;
+}
+
 :root {
   --main-bg-color: #26453e;
   --off-white: #F4F0DB;
@@ -13,10 +23,23 @@
     text-decoration: none;
     font-size: 15px;
     z-index: 0;
+    color: var(--off-white);
 }
+.menu-icon{
+  stroke: var(--off-white) !important;
+  height: 30px;
+
+}
+
+.icon {
+  display: none;
+}
+
 
 .earth-title{
   font-size: 35px;
+  color: var(--off-white);
+  text-decoration: none;
 }
 
 .content{
@@ -34,8 +57,12 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
-
   background-color: var(--main-bg-color);
+}
+
+.card-link{
+  text-decoration: none;
+
 }
 
 .card-info {
@@ -44,20 +71,40 @@
   justify-content: center;
   padding-left: 3vw;
   padding-right: 3vw;
-  line-height: 1.6;
-  color: white;
+  line-height: 1.4;
+  color: var(--off-white);
   z-index: 2;
+  
 }
 
+.info-bottom{
+  margin-top: auto;
+  padding-bottom: 5%;
+}
+.info-top{
+  margin-bottom: auto;
+  padding-top: 5%;
+}
+
+
+
 .headline {
-  font-size: 45px;
+  font-size: 41px;
+  font-weight: 500;
 }
 
 .byline {
   font-size: 16px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: franklin-gothic-urw, sans-serif;
+  font-weight: 500;
+  padding-bottom: 6px;
 }
 
+.overline {
+  font-size: 20px;
+  font-family: franklin-gothic-urw, sans-serif;
+  font-weight: 500;
+}
 .summary {
   font-size: 24px;
 }
@@ -66,48 +113,104 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  vertical-align: middle;
+position: relative;
+}
+
+#sponsored {
+   color: var(--off-white);
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: auto;
+
+
+}
+
+#ad {
+   width: 70%;
+   height: auto !important;
+   object-fit: fill;
+   margin: auto;
+
+}
+
+#card-ad{
+  flex-direction: column;
+  background: black;
+
+}
+
+.fade {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dots{
+  left: 50%;
+  position: absolute;
+  bottom: 3%;
+  z-index: 10;
+}
+
+.pip {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  
+  border: 0;
+  border-radius: 9999px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.pip--active {
+  background: rgba(255, 255, 255, 1);
 }
 
 .full-photo {
   position: absolute;
 }
 
-.overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-color: black;
-  opacity: 0.2;
-  z-index: 1;
-}
 
-.left-container {
-  order: 1;
+
+.left-container, .right-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
   width: 50%;
   overflow: hidden;
+  
+}
+
+.left-container {
+    
+  order: 1;
+}
+
+.text-left {
+  border-left: solid;
+  border-color: var(--off-white);
+  border-width: 0.25px;
+
 }
 
 .right-container {
   order: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  width: 50%;
-  overflow: hidden;
 }
 
 .first-txt {
   font-size: 56px;
+  font-weight: 500;
   position: absolute;
-  top: 45vh;
-  left: 3vw;
-  color: white;
+  top: 1vh;
+  right: 1vw;
+  color: var(--off-white);
   z-index: 2;
+  /* display: none; */
 }
 
 #navigation{
@@ -118,6 +221,10 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: height .4s ease-in-out;
+
+
+  
  
 }
 
@@ -132,6 +239,7 @@ img {
   text-decoration: none;
   opacity: 75%;
   font-family: franklin-gothic-urw, sans-serif;
+  
   
   
 
@@ -151,8 +259,9 @@ img {
   justify-content: space-around;
  
 
- 
-  height: 100%;
+ transition: opacity 0.1s ease;
+ transition-delay: 0.2s;
+height: 100%;
 
 
 }
@@ -183,24 +292,82 @@ img {
   height: 500px;
   background-color: pink;
   margin: auto;
+  max-width: 75%;
 }
 /* card1 slideshow */
 /* Fading animation */
+
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.slides {position: absolute} 
+
+
+/* Slideshow container */
+#card1 {
+ 
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+
+
+/* Fading animation */
 .fade {
+
+
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 6s;
+    animation-name: fade;
+    animation-iteration-count: infinite;
+    animation-duration: 6s;
+
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+    
+      0% {opacity: 0;}
+    20% {opacity: 1;}
+    33% {opacity: 1;}
+    53% {opacity: 0;}
+    100% {opacity: 0;}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+    /* 0% {
+          opacity: 0;
+         
+     }
+
+     100% {
+          opacity: 1;
+         
+     } */
+      0% {opacity: 0;}
+    20% {opacity: 1;}
+    33% {opacity: 1;}
+    53% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
+#f1 {
+     animation-delay: -1s;
+}
+#f2 {
+    -webkit-animation-delay: -5s;
+    animation-delay: -5s;
+
+}
+#f3 {
+    -webkit-animation-delay: -3s;
+     animation-delay: -3s;
+   
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
 }
 
 
@@ -208,17 +375,27 @@ img {
 you want to quickly test how this works on your computer, just make your 
 browser window really skinny */
 @media screen and (max-width: 800px) {
-  .logo{
-    font-size: 20px;
+ 
+
+  .card {
+    flex-direction: column;
+    min-height: 100vh;
+    height: fit-content;
+    padding-bottom: 5%;
+ 
   }
 
   .left-container, .right-container {
     width: 100%;
-    position: absolute;
+    height: fit-content;
+  
   }
 
-  img {
-    position: absolute;
+  .side-photo {
+    order: 0;
+  }
+  #intro-pic{
+    display: none
   }
 
   .first-txt {
@@ -229,5 +406,72 @@ browser window really skinny */
     color: white;
     z-index: 2;
   }
-    
+
+  #navigation{
+    height: 40px;
+    width: 100%;
+    z-index: 10;
+    overflow: hidden;
+  
+  border-bottom: solid;
+  border-color: var(--off-white);
+  border-width: 0.25px;
+  }
+  #navigation ul{
+   opacity: 0%
+  }
+
+ .nav-responsive ul{
+   
+     opacity: 100% !important
+   
+  }
+  
+
+  .nav-responsive{
+    height: 80vh !important;
+  }
+
+  .nav-titles{
+     margin-bottom: 0%
+  }
+
+  .nav-wrapper{
+     padding-top: 0% ;
+      width: 95%;
+    padding-bottom: 2% ;
+  }
+
+  .earth-title{
+    display: none;
+  }
+
+  .logo{
+    font-size: 15px;
+    padding-bottom: 5% !important;
+
+  
+ 
+display:inline-block;
+    padding-top: 10px !important;
+  }
+
+  
+
+  .icon {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    display: block;
+  }
+
+  .cards{
+    width: 100%;
+    margin-left: 0%;
+  }
+
+  .text-left {
+    border-left: none
+  }
+
 }
