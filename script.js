@@ -2,7 +2,7 @@
 var $navigationLinks = $('#navigation > .nav-wrapper > ul > li > a');
 // console.log($navigationLinks)
 // cache (in reversed order) the sections
-var $cards = $($(".card").get().slice(1).reverse());
+var $cards = $($(".card").get().reverse());
 // console.log($(".card"))
 
 
@@ -16,6 +16,7 @@ $cards.each(function () {
   sectionIdTonavigationLink[id] = $('#navigation > .nav-wrapper > ul > li > a[href=\\#' + id + ']');
 });
 
+console.log(sectionIdTonavigationLink)
 
 
 // throttle function, enforces a minimum time interval
